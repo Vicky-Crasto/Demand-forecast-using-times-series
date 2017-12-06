@@ -196,7 +196,7 @@ auto_arima_logap <- auto.arima(log_apdata)
 
 ### Predict the demand for next 12 months with confidence level of 80%
 
-<img src="plot_images/16.1.Predict_demand_80%.png" alt="Predict_demand_80%25">
+<img src="plot_images/16.1.Predict_demand_80%25.png" alt="Predict_demand_80%25">
 
 _The above plot provides the prediction on the logged series. Hence we need to use exp function to get back the orignal series to predict the no. of passengers._
 
@@ -214,7 +214,7 @@ forecast_model_exp$lower <- exp(forecast_model_exp$lower)
 forecast_model_exp$upper <- exp(forecast_model_exp$upper)
 forecast_model_exp$x <- exp(forecast_model_exp$x)
 ```
-<img src="plot_images/16.Predict_demand_80%.png" alt="Predict_demand_80%25">
+<img src="plot_images/16.Predict_demand_80%25.png" alt="Predict_demand_80%25">
 
 ```
 plot(forecast_model_exp)
