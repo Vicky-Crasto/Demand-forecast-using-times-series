@@ -1,8 +1,10 @@
 ### Setting the working directory
+
 ```
 setwd("D:\\Data Scince\\8. Case studies\\5. Oct 2017 - Time series\\r code\\time series case rework")
 ```
 ### Importing libraries
+
 ```
 library(dplyr)
 library(xts)
@@ -11,10 +13,12 @@ library(forecast)
 library(tseries)
 ```
 ### Reading the data set 
+
 ```
 rawdata <- scan("rawdata.txt")
 ```
 ### Converting the data to timeseries data
+
 ```
 apdata <- ts(rawdata,frequency = 12,start = c(1949,1))
 str(apdata)
@@ -22,11 +26,14 @@ str(apdata)
 
 ### Plot the time series
 <img src="plot_images/1.Plot_of_time_series.png" alt="Plot of time series">
+
 ```
 plot_ts <-plot.ts(apdata)
 ```
+
 #### Line of Fit
-<img src="plot_images/2.Line_of_fit.png" alt="line of fit"  >
+<img src="plot_images/2.Line_of_fit.png" alt="line of fit">
+
 ```
 plot(apdata)
 abline(reg=lm(apdata~time(apdata)))
@@ -34,10 +41,13 @@ abline(reg=lm(apdata~time(apdata)))
 ### Plotting the trend line and the seasonal effect
 
 <img src="plot_images/3.Trendline.png" alt="trendline">
+
 ```
 plot(aggregate(apdata,FUN = mean))
 ```
+
 <img src="plot_images/4.Seasonal_effect.png" alt="Seasonal_effect">
+
 ```
 boxplot(apdata~cycle(apdata))
 ```
@@ -45,7 +55,7 @@ boxplot(apdata~cycle(apdata))
 *We see a increasing trend
 Also the mean increasing the month of July and August indicating a seasonal effect.* 
 
-> **We see that the time series has the following**
+**We see that the time series has the following**
     1. an increasing trend.
     2. A seasonal component
     3. Unequal variance which increases with time
