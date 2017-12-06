@@ -67,9 +67,10 @@ Hence the series is not stationary and needs to be transformed.The variance and 
 
 ```
 log_apdata <-log(apdata)
-<img src="plot_images/6.Log_transformed.png" alt="Log_transformed">
 plot_logts <-plot.ts(log_apdata)
 ```
+<img src="plot_images/6.Log_transformed.png" alt="Log_transformed">
+
 _We see that the variation in the plot has reduced after the log transformation_
 
 ### Decomposing the time series
@@ -98,7 +99,9 @@ _We see that the lag are auto correlated and they drop gradaully indicating it i
 ```
 apdata_pacf <- pacf(log_apdata, lag.max = 20)
 ```
+
 <img src="plot_images/8.Pacf_without_difference.png" alt="pacf without differences">
+
 _We see that the lag at the 9 and 12 peroid cross the blue line indicating they are significantly different from zero and not stationary_
 
 #### 2.ACF and PACF with single period difference 
@@ -118,8 +121,11 @@ _With a single period differnece we were able to stablize the trend component of
 ```
 ap_diff1_acf <- acf(log_ap_diff1, lag.max = 36)
 ```
+
 <img src="plot_images/10.ACF_1period_differencing.png" alt="ACF_1period_differencing">
+
 _We see that the lag at 1,4,8,11,12,13,16,20,23,24,25 and so on are significant, indicating that we need to difference the data further_
+
 ##### PACF with single period differencing
 ```
 ap_diff1_pacf <- pacf(log_ap_diff1, lag.max = 36)
@@ -190,7 +196,7 @@ auto_arima_logap <- auto.arima(log_apdata)
 
 ### Predict the demand for next 12 months with confidence level of 80%
 
-<img src="plot_images/16.1.Predict_demand_80%.png" alt="Predict_demand_80%">
+<img src="plot_images/16.1.Predict_demand_80%.png" alt="Predict_demand_80%25">
 
 _The above plot provides the prediction on the logged series. Hence we need to use exp function to get back the orignal series to predict the no. of passengers._
 
@@ -208,7 +214,7 @@ forecast_model_exp$lower <- exp(forecast_model_exp$lower)
 forecast_model_exp$upper <- exp(forecast_model_exp$upper)
 forecast_model_exp$x <- exp(forecast_model_exp$x)
 ```
-<img src="plot_images/16.Predict_demand_80%.png" alt="Predict_demand_80%">
+<img src="plot_images/16.Predict_demand_80%.png" alt="Predict_demand_80%25">
 
 ```
 plot(forecast_model_exp)
